@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>layui</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+        <link rel="stylesheet" href="../css/public.css" media="all">
+    </head>
+    <body>
+        <div class="layuimini-container">
+            <div class="layuimini-main">
+
+                <fieldset class="layui-elem-field layui-field-title" >
+                    <legend>菜单编辑</legend>
+                </fieldset>
+
+                <form class="layui-form" action="" lay-filter="menuInfo">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">父级菜单</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" name="pid" />
+                            <input type="text" name="pTitle" autocomplete="off" class="layui-input" disabled>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">当前菜单</label>
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" />
+                            <input type="text" name="title" placeholder="请输入菜单名称（比如：用户管理）" lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">图标</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="icon" placeholder="请输入图标（比如：fa fa-user）"  autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">链接</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="href" placeholder="请输入访问链接（比如：/user/user）" lay-verify="required" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">排序</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="sort" placeholder="请输入排序（比如：1）" autocomplete="off" lay-verify="number" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="remark" placeholder="请输入备注" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">打开方式</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="target" autocomplete="off" class="layui-input" value="_self" disabled>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="menu">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+
+        <script th:inline="javascript">
+            var formData = [[${formData}]];
+
+            layui.use(['form'], function () {
+                var form = layui.form;
+                var $ = layui.jquery;
+
+                //效验
+                form.verify({
+                    number: function (value) {
+                        if(!Number(value)){
+                            return '排序必须是数字！';
+                        }
+                    }
+                });
+
+                //初始赋值
+                form.val('menuInfo', formData);
+
+                //监听提交
+                form.on('submit(menu)', function (data) {
+                    $.ajax({
+                        type: "get",
+                        url: '/pxyzadmin/menu/saveMenu',
+                        data: data.field,
+                        cache: false,
+                        async: false,
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        success: function (data) {
+                            window.parent.layer.closeAll();
+                        }
+                    });
+                    return false;
+                });
+            });
+
+        </script>
+    </body>
+</html>

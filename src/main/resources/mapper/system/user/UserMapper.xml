@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.pxyz.pxyzadmin.system.user.mapper.UserMapper" >
+
+    <insert id="addUser">
+        INSERT INTO SYS_USER
+        (
+        ID, USERNAME, REMARK, EMAIL, CREATE_TIME, UPDATE_TIME, MARK
+        )
+        VALUES
+        (
+        #{id}, #{username}, #{remark}, #{email}, now(), now(), '1'
+        )
+    </insert>
+
+    <update id="updateUser">
+        UPDATE SYS_USER SET USERNAME = #{username}, REMARK = #{remark}, email = #{email}, UPDATE_TIME= NOW() WHERE ID = #{id}
+    </update>
+
+    <update id="delUser">
+        UPDATE SYS_USER SET MARK = '0', UPDATE_TIME= NOW() WHERE ID = #{id}
+    </update>
+
+    <select id="getUserList" resultType="java.util.Map">
+        SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME LIKE '%${username}%' AND EMAIL LIKE '%${email}%'
+    </select>
+
+    <select id="getUserById" resultType="java.util.Map">
+         SELECT * FROM SYS_USER WHERE MARK = '1' AND ID = #{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layui-field-title" >
+            <legend>用户信息编辑</legend>
+        </fieldset>
+
+        <form class="layui-form" action="" lay-filter="userInfo">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="id" />
+                    <input type="text" name="username" autocomplete="off" placeholder="请输入用户名称（比如：张三）" lay-verify="required" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-block">
+                    <input type="text" name="email" placeholder="请输入邮箱名称（比如：123@163.com）" lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-block">
+                    <input type="text" name="remark" placeholder="请输入备注" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="user">立即提交</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+
+<script th:inline="javascript">
+    var formData = [[${formData}]];
+
+    layui.use(['form'], function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        //初始赋值
+        form.val('userInfo', formData);
+
+        //监听提交
+        form.on('submit(user)', function (data) {
+            $.ajax({
+                type: "get",
+                url: '/pxyzadmin/user/saveUser',
+                data: data.field,
+                cache: false,
+                async: false,
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    window.parent.layer.closeAll();
+                }
+            });
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

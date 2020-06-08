@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.pxyz.pxyzadmin.system.menu.mapper.MenuMapper" >
+
+    <select id="findMenus" resultType="java.util.Map">
+        SELECT
+        ID, PID, HREF, TARGET, TITLE, ICON
+        FROM SYS_MENU
+        WHERE STATUS = '1' AND ID != '0' AND MARK = '1'  ORDER BY SORT
+    </select>
+
+    <select id="getMenuList" resultType="java.util.Map">
+        SELECT * FROM SYS_MENU WHERE MARK = '1' ORDER BY SORT
+    </select>
+
+    <select id="getMenuById" resultType="java.util.Map">
+        select m.id,m.title,m.icon,m.href,m.target,m.sort,m.status,m.remark,m.pid,m1.title pTitle from SYS_MENU m LEFT JOIN SYS_MENU m1 ON m.pid = m1.id where m.id = #{id} AND m.MARK = '1' AND m1.mark = '1'
+    </select>
+
+    <select id="findMenuBind" resultType="java.util.Map">
+        SELECT * FROM SYS_MENU WHERE ID IN (SELECT MENU_ID FROM SYS_ROLE_MENU WHERE ROLE_ID = #{roleId}) AND MARK = '1'
+    </select>
+
+    <insert id="addMenu">
+        INSERT INTO SYS_MENU
+        (
+        ID,TITLE,HREF,ICON,TARGET,REMARK,SORT,PID,STATUS,CREATE_TIME,UPDATE_TIME
+        )
+        VALUES
+        (
+        #{id},#{title},#{href},#{icon},#{target},#{remark},#{sort},#{pid},'1',now(),now()
+        )
+    </insert>
+
+    <update id="updateMenu">
+        UPDATE SYS_MENU SET
+        TITLE = #{title},
+        HREF = #{href},
+        ICON = #{icon},
+        TARGET = #{target},
+        REMARK = #{remark},
+        SORT = #{sort},
+        PID = #{pid},
+        UPDATE_TIME = NOW()
+        WHERE ID = #{id} AND MARK = '1'
+    </update>
+
+    <update id="updateMenuStatus">
+        UPDATE SYS_MENU SET STATUS = #{status},UPDATE_TIME = NOW() WHERE ID = #{id} AND MARK = '1'
+    </update>
+
+    <update id="delMenu">
+        UPDATE SYS_MENU SET MARK = '0',UPDATE_TIME = NOW() WHERE ID = #{id} AND MARK = '1'
+    </update>
+
+</mapper>

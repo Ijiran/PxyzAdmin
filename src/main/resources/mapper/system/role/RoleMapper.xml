@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.pxyz.pxyzadmin.system.role.mapper.RoleMapper" >
+
+    <insert id="addRole">
+        INSERT INTO SYS_ROLE
+        (ID, ROLE_NAME, REMARK, MARK, CREATE_TIME, UPDATE_TIME)
+        VALUES
+        (#{id}, #{roleName}, #{remark}, '1', now(), now())
+    </insert>
+
+    <insert id="addMenuBind">
+        INSERT INTO SYS_ROLE_MENU
+        (ROLE_ID, MENU_ID)
+        VALUES
+        (#{roleId}, #{menuId})
+    </insert>
+
+    <update id="updateRole">
+        UPDATE SYS_ROLE SET ROLE_NAME = #{roleName}, REMARK = #{remark}, UPDATE_TIME = NOW() WHERE ID = #{id}
+    </update>
+
+    <update id="delRole">
+        UPDATE SYS_ROLE SET MARK = '0' WHERE ID = #{id}
+    </update>
+
+    <delete id="delMenuBind">
+        DELETE FROM SYS_ROLE_MENU WHERE ROLE_ID = #{roleId}
+    </delete>
+
+    <select id="getRoleList" resultType="java.util.Map">
+        SELECT id, role_name, remark, mark, create_time, update_time FROM SYS_ROLE WHERE ROLE_NAME LIKE '%${roleName}%' AND MARK = '1'
+    </select>
+
+    <select id="getRoleById" resultType="java.util.Map">
+        SELECT * FROM SYS_ROLE WHERE ID = #{id}
+    </select>
+
+</mapper>

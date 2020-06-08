@@ -1,0 +1,50 @@
+#app
+server:
+    port: 80
+    servlet:
+      context-path: /pxyzadmin
+    tomcat:
+      uri-encoding: utf-8
+
+spring:
+  datasource:
+    name: pxyzadmin
+    url: jdbc:mysql://127.0.0.1:3306/pxyzadmin
+    username: 1
+    password: 1
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      # 初始化大小、最小、最大连接数
+      initial-size: 10
+      min-idle: 30
+      max-active: 50
+      # 配置获取连接等待超时的时间
+      max-wait: 60000
+      # 监控后台账号和密码
+      stat-view-servlet:
+        login-username: admin
+        login-password: 1
+      # 配置 StatFilter
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+  # thymeleaf 相关设置
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+  servlet:
+    multipart:
+      file-size-threshold: 0
+      max-file-size: 100MB #单个数据的大小
+      max-request-size: 100MB #总数据的大小
+  http:
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+
+

@@ -50,4 +50,11 @@ public interface RoleService {
      * @param menuIds
      */
     void saveMenuBind(String roleId, String menuIds);
+
+    /**
+     * 获取用户id绑定的角色
+     * @param userId
+     * @return
+     */
+    List<Map<String, String>> getRoleBind(String userId);
 }

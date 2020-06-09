@@ -3,6 +3,7 @@ package top.pxyz.pxyzadmin.system.user.controller;
 import com.alibaba.fastjson.JSONObject;
 import top.pxyz.pxyzadmin.core.util.base.ValidateHelper;
 import top.pxyz.pxyzadmin.core.util.page.PageUtils;
+import top.pxyz.pxyzadmin.system.role.service.RoleService;
 import top.pxyz.pxyzadmin.system.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 跳转用户管理首页
@@ -117,4 +121,31 @@ public class UserController {
         return JSONObject.toJSONString(map);
     }
 
+    /**
+     * 查询已绑定角色
+     * @return
+     */
+    @RequestMapping("getRoleBind")
+    @ResponseBody
+    public String getRoleBind(HttpServletRequest request){
+        String id = request.getParameter("id");
+        List<Map<String,String>> list = roleService.getRoleBind(id);
+        return JSONObject.toJSONString(list);
+    }
+
+    /**
+     * 用户绑定角色
+     * @param request
+     * @return
+     */
+    @RequestMapping("saveRoleBind")
+    @ResponseBody
+    public String saveRoleBind(HttpServletRequest request){
+        String userId = request.getParameter("userId");
+        String roleId = request.getParameter("roleId");
+        userService.saveRoleBind(userId, roleId);
+        Map<String,String> map = new HashMap<>();
+        map.put("result","success");
+        return JSONObject.toJSONString(map);
+    }
 }

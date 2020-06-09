@@ -36,4 +36,8 @@
         SELECT * FROM SYS_ROLE WHERE ID = #{id}
     </select>
 
+    <select id="getRoleBind" resultType="java.util.Map">
+        SELECT * FROM SYS_ROLE_USER WHERE USER_ID = #{userId}
+    </select>
+
 </mapper>

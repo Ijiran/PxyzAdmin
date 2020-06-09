@@ -46,4 +46,17 @@ public interface UserMapper {
      * @param i
      */
     void delUser(String i);
+
+    /**
+     * 清空该用户下的绑定角色信息
+     * @param userId
+     */
+    void delRoleBind(String userId);
+
+    /**
+     * 新增用户绑定角色信息
+     * @param roleId
+     * @param userId
+     */
+    void addRoleBind(@Param("roleId") String roleId, @Param("userId") String userId);
 }

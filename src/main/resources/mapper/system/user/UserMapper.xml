@@ -13,6 +13,13 @@
         )
     </insert>
 
+    <insert id="addRoleBind">
+        INSERT INTO SYS_ROLE_USER
+        (ROLE_ID, USER_ID)
+        VALUES
+        (#{roleId} , #{userId})
+    </insert>
+
     <update id="updateUser">
         UPDATE SYS_USER SET USERNAME = #{username}, REMARK = #{remark}, email = #{email}, UPDATE_TIME= NOW() WHERE ID = #{id}
     </update>
@@ -20,6 +27,10 @@
     <update id="delUser">
         UPDATE SYS_USER SET MARK = '0', UPDATE_TIME= NOW() WHERE ID = #{id}
     </update>
+
+    <delete id="delRoleBind">
+        DELETE FROM SYS_ROLE_USER WHERE USER_ID = #{userId}
+    </delete>
 
     <select id="getUserList" resultType="java.util.Map">
         SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME LIKE '%${username}%' AND EMAIL LIKE '%${email}%'

@@ -26,3 +26,5 @@ hs_err_pid*
 admin.iml
 
 target/
+!/pxyzadmin.iml
+pxyzadmin.iml

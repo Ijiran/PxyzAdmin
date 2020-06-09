@@ -47,4 +47,11 @@ public interface UserService {
      * @param id
      */
     void delUser(String id);
+
+    /**
+     * 保存用户绑定角色信息
+     * @param userId
+     * @param roleId
+     */
+    void saveRoleBind(String userId, String roleId);
 }

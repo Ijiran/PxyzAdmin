@@ -54,7 +54,7 @@ public class RoleController {
     }
 
     /**
-     * 获取用户列表
+     * 获取角色列表
      * @param request
      * @return
      */
@@ -64,6 +64,18 @@ public class RoleController {
         String roleName = request.getParameter("roleName");
         List<Map<String,String>> list = roleService.getRoleList(roleName);
         return PageUtils.toPage(list);
+    }
+
+    /**
+     * 获取角色列表（不供表格使用）
+     * @param request
+     * @return
+     */
+    @RequestMapping("getRoles")
+    @ResponseBody
+    public String getRoles(HttpServletRequest request){
+        List<Map<String,String>> list = roleService.getRoleList("");
+        return JSONObject.toJSONString(list);
     }
 
     /**

@@ -58,4 +58,11 @@ public interface RoleMapper {
      * @param menuId
      */
     void addMenuBind(@Param("roleId") String roleId, @Param("menuId") String menuId);
+
+    /**
+     * 查询用户绑定的角色
+     * @param userId
+     * @return
+     */
+    List<Map<String, String>> getRoleBind(String userId);
 }

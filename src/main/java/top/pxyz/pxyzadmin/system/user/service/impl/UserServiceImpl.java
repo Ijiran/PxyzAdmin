@@ -84,4 +84,17 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+    /**
+     * 保存用户绑定角色信息
+     * @param userId
+     * @param roleId
+     */
+    public void saveRoleBind(String userId, String roleId){
+        userMapper.delRoleBind(userId);//清空角色菜单绑定
+        String[] roles = roleId.split(",");
+        for (String role : roles){
+            userMapper.addRoleBind(role, userId);
+        }
+    }
 }

@@ -144,7 +144,7 @@ layui.use(['form', 'table'], function () {
             shade: 0.2,
             maxmin:true,
             shadeClose: true,
-            area: ['40%', '80%'],
+            area: ['700px', '600px'],
             content: '/pxyzadmin/user/toRoleBind?id='+id,
             end: function () {
                 reload();

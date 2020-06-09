@@ -98,4 +98,13 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
+    /**
+     * 获取用户id绑定的角色
+     * @param userId
+     * @return
+     */
+    public List<Map<String, String>> getRoleBind(String userId){
+        return roleMapper.getRoleBind(userId);
+    }
+
 }

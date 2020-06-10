@@ -2,6 +2,7 @@ package top.pxyz.pxyzadmin.system.user.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import top.pxyz.pxyzadmin.system.user.bean.User;
 
 import java.util.List;
 import java.util.Map;
@@ -59,4 +60,11 @@ public interface UserMapper {
      * @param userId
      */
     void addRoleBind(@Param("roleId") String roleId, @Param("userId") String userId);
+
+    /**
+     * 根据名称查询User用户信息
+     * @param username
+     * @return
+     */
+    User findUserByName(String username);
 }

@@ -5,11 +5,11 @@
     <insert id="addUser">
         INSERT INTO SYS_USER
         (
-        ID, USERNAME, REMARK, EMAIL, CREATE_TIME, UPDATE_TIME, MARK
+        ID, USERNAME, REMARK, EMAIL, CREATE_TIME, UPDATE_TIME, MARK, PASSWORD
         )
         VALUES
         (
-        #{id}, #{username}, #{remark}, #{email}, now(), now(), '1'
+        #{id}, #{username}, #{remark}, #{email}, now(), now(), '1', #{password}
         )
     </insert>
 
@@ -38,6 +38,10 @@
 
     <select id="getUserById" resultType="java.util.Map">
          SELECT * FROM SYS_USER WHERE MARK = '1' AND ID = #{id}
+    </select>
+
+    <select id="findUserByName" resultType="top.pxyz.pxyzadmin.system.user.bean.User">
+        SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME = #{username}
     </select>
 
 </mapper>

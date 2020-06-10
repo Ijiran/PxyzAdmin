@@ -1,7 +1,13 @@
 package top.pxyz.pxyzadmin.system.user.service.impl;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import top.pxyz.pxyzadmin.core.util.base.ValidateHelper;
+import top.pxyz.pxyzadmin.core.util.encrypt.BCryptUtils;
 import top.pxyz.pxyzadmin.core.util.sequence.GenerateSequenceUtil;
+import top.pxyz.pxyzadmin.system.user.bean.User;
 import top.pxyz.pxyzadmin.system.user.mapper.UserMapper;
 import top.pxyz.pxyzadmin.system.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +75,7 @@ public class UserServiceImpl implements UserService {
         map.put("username", username);
         map.put("email", email);
         map.put("remark", remark);
+        map.put("password", BCryptUtils.encode("123456"));
         userMapper.addUser(map);
     }
 
@@ -96,5 +103,14 @@ public class UserServiceImpl implements UserService {
         for (String role : roles){
             userMapper.addRoleBind(role, userId);
         }
+    }
+
+    /**
+     * 根据名称查询User用户信息
+     * @param username
+     * @return
+     */
+    public User findUserByName(String username){
+        return userMapper.findUserByName(username);
     }
 }

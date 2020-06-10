@@ -1,10 +1,21 @@
 package top.pxyz.pxyzadmin.system.user.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Ijiran
@@ -19,8 +30,16 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/login/login")
-    public String toLogin(){
-        return "login/login";
+    public ModelAndView toLogin(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("msg", "不正确的用户名和密码");
+        }
+        if (logout != null) {
+            model.addObject("msg", "你已经成功退出");
+        }
+        model.setViewName("login/login");
+        return model;
     }
 
     /**
@@ -45,15 +64,14 @@ public class LoginController {
      * 登录操作
      * @return
      */
-    @RequestMapping("login")
+    /*@RequestMapping("login")
     public ModelAndView login(HttpServletRequest request){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
         //登录成功后跳转
         ModelAndView model = new ModelAndView();
         model.setViewName("admin/index");
         return model;
-    }
+    }*/
 
 }

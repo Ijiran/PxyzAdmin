@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>后台管理-登陆</title>
@@ -27,7 +27,7 @@
         .layui-icon-password {color:#a78369 !important;}
         .layui-icon-password:hover {color:#9dadce !important;}
         .admin-input-username {border-top-style:solid;border-radius:10px 10px 0 0;}
-        .admin-input-verify {border-radius:0 0 10px 10px;}
+        .admin-password {border-radius:0 0 10px 10px;}
         .admin-button {margin-top:20px;font-weight:bold;font-size:18px;width:300px;height:50px;border-radius:5px;background-color:#a78369;border:1px solid #d8b29f}
         .admin-icon {margin-left:260px;margin-top:10px;font-size:30px;}
         i {position:absolute;}
@@ -39,23 +39,22 @@
     <div></div>
     <div class="admin-login-background">
         <div class="admin-header">
-            <span>Document</span>
+            <span>Pxyz Admin</span>
         </div>
-        <form class="layui-form" action="">
+        <form class="layui-form" method="post" action="/pxyzadmin/login/login">
             <div>
                 <i class="layui-icon layui-icon-username admin-icon"></i>
-                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input admin-input admin-input-username">
+                <input type="text" name="username" placeholder="请输入用户名" lay-verify="required" autocomplete="off" class="layui-input admin-input admin-input-username">
             </div>
             <div>
                 <i class="layui-icon layui-icon-password admin-icon"></i>
-                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input admin-input">
+                <input type="password" name="password" placeholder="请输入密码" lay-verify="required" autocomplete="off" class="layui-input admin-input admin-password">
             </div>
-            <div>
-                <input type="text" name="captcha" placeholder="请输入验证码" autocomplete="off" class="layui-input admin-input admin-input-verify" value="xszg">
-                <img class="admin-captcha" width="90" height="30" src="../images/captcha.jpg">
-            </div>
-            <button class="layui-btn admin-button" lay-submit="" lay-filter="login">登 陆</button>
+            <input class="layui-btn admin-button" type="submit" value="登 陆" />
         </form>
+        <div th:if="${msg != null}" style="text-align: center; margin-top: 5px">
+            <p style="color: red" th:text="${msg}"></p>
+        </div>
     </div>
 </div>
 <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
@@ -64,23 +63,6 @@
         var form = layui.form,
             layer = layui.layer;
 
-        // 登录过期的时候，跳出ifram框架
-        if (top.location != self.location) top.location = self.location;
-
-        // 进行登录操作
-        form.on('submit(login)', function (data) {
-            data = data.field;
-            if (data.username == '') {
-                layer.msg('用户名不能为空');
-                return false;
-            }
-            if (data.password == '') {
-                layer.msg('密码不能为空');
-                return false;
-            }
-
-            return false;
-        });
     });
 </script>
 </body>

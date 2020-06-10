@@ -1,5 +1,7 @@
 package top.pxyz.pxyzadmin.system.user.service;
 
+import top.pxyz.pxyzadmin.system.user.bean.User;
+
 import java.util.List;
 import java.util.Map;
 
@@ -54,4 +56,11 @@ public interface UserService {
      * @param roleId
      */
     void saveRoleBind(String userId, String roleId);
+
+    /**
+     * 根据名称查询User用户信息
+     * @param username
+     * @return
+     */
+    User findUserByName(String username);
 }

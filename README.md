@@ -5,6 +5,8 @@
 
 [PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index)
 
+github代码地址：https://github.com/Ijiran/PxyzAdmin/
+gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin
 
 ## 框架技术
 

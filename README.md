@@ -1,6 +1,9 @@
 # PxyzAdmin
 后台管理系统（layui、springboot），提供基础功能集成，比如用户、菜单、角色、监控、日志、字典。。。
 
+## 演示地址
+
+[PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index)
 
 
 ## 框架技术
@@ -46,7 +49,7 @@
 
 ## 演示地址
 
-admin.pxyz.top/index
+[PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index)
 
 ## 系统截图
 

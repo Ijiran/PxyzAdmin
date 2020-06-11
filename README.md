@@ -32,7 +32,7 @@
 
 - 前端模板使用了
 
-[https://github.com/zhongshaofa/layuiminilayuimini]: 
+[https://github.com/zhongshaofa/layuimini]: 
 
 的模板，十分感谢，提供了一个很好的思路去管理这么多的前端组件；因为我本身在其基础上更新了一些组件的版本和代码，如果大家有需要最新的前端模板，可以点击链接自行获取layuimini项目。
 

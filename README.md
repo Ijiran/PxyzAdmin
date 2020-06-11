@@ -1,5 +1,5 @@
 # PxyzAdmin
-后台管理系统，集成最常用、最基础的功能。
+后台管理系统（layui、springboot），提供基础功能集成，比如用户、菜单、角色、监控、日志、字典。。。
 
 
 
@@ -50,3 +50,7 @@ admin.pxyz.top/index
 
 ## 系统截图
 
+![登录页](https://images.gitee.com/uploads/images/2020/0611/223354_664f8834_1139309.png "1.png")
+![用户管理](https://images.gitee.com/uploads/images/2020/0611/223424_96ab67d1_1139309.png "2.png")
+![角色管理](https://images.gitee.com/uploads/images/2020/0611/223447_56d1bedb_1139309.png "4.png")
+![菜单管理](https://images.gitee.com/uploads/images/2020/0611/223500_3ecdccc1_1139309.png "5.png")

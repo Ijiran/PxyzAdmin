@@ -3,7 +3,7 @@
 
 ## 演示地址
 
-[PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index)
+[PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index) 账号：admin 密码：123456
 
 github代码地址：https://github.com/Ijiran/PxyzAdmin/
 gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin

@@ -257,10 +257,11 @@ layui.define(["jquery", "miniMenu", "element","miniTab", "miniTheme"], function 
                 if (clearUrl != undefined && clearUrl != '' && clearUrl != null) {
                     $.getJSON(clearUrl, function (data, status) {
                         layer.close(loading);
-                        if (data.code != 1) {
-                            return miniAdmin.error(data.msg);
+                        if (data.result != 'success') {
+                            return miniAdmin.error("清理缓存失败！请联系管理员。");
                         } else {
-                            return miniAdmin.success(data.msg);
+                            window.location.reload();
+                            return false;
                         }
                     }).fail(function () {
                         layer.close(loading);

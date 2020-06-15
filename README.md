@@ -55,7 +55,7 @@ gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin
 
 ## 系统截图
 
-![登录页](https://images.gitee.com/uploads/images/2020/0611/223354_664f8834_1139309.png "1.png")
-![用户管理](https://images.gitee.com/uploads/images/2020/0611/223424_96ab67d1_1139309.png "2.png")
-![角色管理](https://images.gitee.com/uploads/images/2020/0611/223447_56d1bedb_1139309.png "4.png")
-![菜单管理](https://images.gitee.com/uploads/images/2020/0611/223500_3ecdccc1_1139309.png "5.png")
+![登录页](https://images.gitee.com/uploads/images/2020/0611/223354_664f8834_1139309.png "登录页")
+![用户管理](https://images.gitee.com/uploads/images/2020/0611/223424_96ab67d1_1139309.png "用户管理")
+![角色管理](https://images.gitee.com/uploads/images/2020/0611/223447_56d1bedb_1139309.png "角色管理")
+![菜单管理](https://images.gitee.com/uploads/images/2020/0611/223500_3ecdccc1_1139309.png "菜单管理")

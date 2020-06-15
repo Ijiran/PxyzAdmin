@@ -50,11 +50,11 @@
 
 			<ul class="layui-nav layui-layout-right">
 
-				<li class="layui-nav-item" lay-unselect>
+				<!--<li class="layui-nav-item" lay-unselect>
 					<a href="javascript:;" data-refresh="刷新"><i class="fa fa-refresh"></i></a>
-				</li>
+				</li>-->
 				<li class="layui-nav-item" lay-unselect>
-					<a href="javascript:;" data-clear="清理" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
+					<a href="javascript:;" data-clear="清理" title="清理缓存并刷新" class="layuimini-clear"><i class="fa fa-trash-o"></i></a>
 				</li>
 				<li class="layui-nav-item mobile layui-hide-xs" lay-unselect>
 					<a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
@@ -63,10 +63,11 @@
 					<a href="javascript:;">admin</a>
 					<dl class="layui-nav-child">
 						<dd>
-							<a href="javascript:;" layuimini-content-href="page/user-setting.html" data-title="基本资料" data-icon="fa fa-gears">基本资料<span class="layui-badge-dot"></span></a>
+							<!--<span class="layui-badge-dot"></span>-->
+							<a href="javascript:;" layuimini-content-href="/pxyzadmin/user/toUserSetting" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
 						</dd>
 						<dd>
-							<a href="javascript:;" layuimini-content-href="page/user-password.html" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+							<a href="javascript:;" layuimini-content-href="/pxyzadmin/user/toUserPwd" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
 						</dd>
 						<dd>
 							<hr>
@@ -137,7 +138,7 @@
 
 		var options = {
 			iniUrl: "/pxyzadmin/menu/init",    // 初始化接口
-			clearUrl: "api/clear.json", // 缓存清理接口
+			clearUrl: "/pxyzadmin/clear", // 缓存清理接口
 			urlHashLocation: false,      // 是否打开hash定位
 			bgColorDefault: false,      // 主题默认配置
 			multiModule: true,          // 是否开启多模块

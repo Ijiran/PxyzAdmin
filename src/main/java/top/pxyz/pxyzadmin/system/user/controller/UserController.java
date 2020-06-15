@@ -71,6 +71,30 @@ public class UserController {
     }
 
     /**
+     * 跳转个人信息编辑页面
+     * @return
+     */
+    @RequestMapping("toUserSetting")
+    public Object toUserSetting(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/system/user/userSetting");
+        modelAndView.addObject("id",null);
+        return modelAndView;
+    }
+
+    /**
+     * 跳转个人密码修改页面
+     * @return
+     */
+    @RequestMapping("toUserPwd")
+    public Object toUserPwd(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin/system/user/userPwd");
+        modelAndView.addObject("id",null);
+        return modelAndView;
+    }
+
+    /**
      * 获取用户列表
      * @param request
      * @return

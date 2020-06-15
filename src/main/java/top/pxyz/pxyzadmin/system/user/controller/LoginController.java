@@ -1,5 +1,6 @@
 package top.pxyz.pxyzadmin.system.user.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,11 +12,14 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Ijiran
@@ -58,6 +62,18 @@ public class LoginController {
     @RequestMapping("/welcome")
     public String toWelcome(){
         return "admin/welcome";
+    }
+
+    /**
+     * 清理缓存
+     * @return
+     */
+    @RequestMapping("/clear")
+    @ResponseBody
+    public String clear(){
+        Map<String,String> map = new HashMap<>();
+        map.put("result","success");
+        return JSONObject.toJSONString(map);
     }
 
     /**

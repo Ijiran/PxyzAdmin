@@ -33,7 +33,7 @@
     </delete>
 
     <select id="getUserList" resultType="java.util.Map">
-        SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME LIKE '%${username}%' AND EMAIL LIKE '%${email}%'
+        SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME LIKE '%${username}%' AND EMAIL LIKE '%${email}%' AND USERNAME != 'admin'
     </select>
 
     <select id="getUserById" resultType="java.util.Map">

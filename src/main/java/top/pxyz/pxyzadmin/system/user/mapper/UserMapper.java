@@ -1,6 +1,7 @@
 package top.pxyz.pxyzadmin.system.user.mapper;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 import top.pxyz.pxyzadmin.system.user.bean.User;
 
@@ -67,4 +68,12 @@ public interface UserMapper {
      * @return
      */
     User findUserByName(String username);
+
+    /**
+     * 更新密码
+     * @param id
+     * @param password
+     */
+    void updatePwd(@Param("id") String id,@Param("password") String password);
+
 }

@@ -32,6 +32,10 @@
         DELETE FROM SYS_ROLE_USER WHERE USER_ID = #{userId}
     </delete>
 
+    <update id="updatePwd">
+        UPDATE SYS_USER SET PASSWORD = #{password} WHERE ID = #{id}
+    </update>
+
     <select id="getUserList" resultType="java.util.Map">
         SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME LIKE '%${username}%' AND EMAIL LIKE '%${email}%' AND USERNAME != 'admin'
     </select>
@@ -43,5 +47,6 @@
     <select id="findUserByName" resultType="top.pxyz.pxyzadmin.system.user.bean.User">
         SELECT * FROM SYS_USER WHERE MARK = '1' AND USERNAME = #{username}
     </select>
+
 
 </mapper>

@@ -63,4 +63,25 @@ public interface UserService {
      * @return
      */
     User findUserByName(String username);
+
+    /**
+     * 密码重置
+     * @param id
+     */
+    void resetPwd(String id);
+
+    /**
+     * 检查旧密码是否输入正确
+     * @param id
+     * @param oldPwd
+     * @return
+     */
+    boolean checkOldPwd(String id, String oldPwd);
+
+    /**
+     * 修改密码
+     * @param id
+     * @param newPwd
+     */
+    void updatePwd(String id, String newPwd);
 }

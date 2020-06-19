@@ -5,6 +5,9 @@
 
 [PxyzAdmin演示地址](http://116.196.124.0:9090/pxyzadmin/index) 账号：admin 密码：123456
 
+请大家演示时不要把系统管理菜单的状态关掉，关掉后就看不到菜单了。
+<br>尽量新增一些菜单尝试，这样效果会更好哦。
+
 github代码地址：https://github.com/Ijiran/PxyzAdmin/
 gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin
 
@@ -22,11 +25,13 @@ gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin
 - 菜单管理
 - 角色管理
 
+## 最新完成
+- 用户管理-密码重置
+
 ## 正在开发
 
 - 基本信息 & 修改密码
 - 角色管理-用户授权
-- 用户管理-密码重置
 - ip白名单
 - 监控管理：读取服务器当前各项性能参数（oshi-core）
 - 字典管理

@@ -172,4 +172,42 @@ public class UserController {
         map.put("result","success");
         return JSONObject.toJSONString(map);
     }
+
+    /**
+     * 密码重置
+     * @param request
+     * @return
+     */
+    @RequestMapping("resetPwd")
+    @ResponseBody
+    public String resetPwd(HttpServletRequest request){
+        String id = request.getParameter("id");
+        userService.resetPwd(id);
+        Map<String,String> map = new HashMap<>();
+        map.put("result","success");
+        return JSONObject.toJSONString(map);
+    }
+
+    /**
+     * 密码修改
+     * @param request
+     * @return
+     */
+    @RequestMapping("resetPwd")
+    @ResponseBody
+    public String updatePwd(HttpServletRequest request){
+        String id = request.getParameter("id");
+        String oldPwd = request.getParameter("oldPwd");
+        String newPwd = request.getParameter("newPwd");
+        Map<String,String> map = new HashMap<>();
+        if(!userService.checkOldPwd(id, oldPwd)){
+            map.put("result","fail");
+            map.put("message","旧密码输入错误！");
+        }else{
+            userService.updatePwd(id, newPwd);
+            map.put("result","success");
+        }
+        return JSONObject.toJSONString(map);
+    }
+
 }

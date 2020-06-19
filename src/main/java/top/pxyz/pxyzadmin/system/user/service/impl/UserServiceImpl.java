@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import top.pxyz.pxyzadmin.core.util.base.ValidateHelper;
 import top.pxyz.pxyzadmin.core.util.encrypt.BCryptUtils;
+import top.pxyz.pxyzadmin.core.util.encrypt.MD5Utils;
 import top.pxyz.pxyzadmin.core.util.sequence.GenerateSequenceUtil;
 import top.pxyz.pxyzadmin.system.user.bean.User;
 import top.pxyz.pxyzadmin.system.user.mapper.UserMapper;
@@ -27,6 +28,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    //123456
+    private static String defaultPwd = "7C4A8D09CA3762AF61E59520943DC26494F8941B";
 
     /**
      * 获取用户列表信息
@@ -113,4 +117,38 @@ public class UserServiceImpl implements UserService {
     public User findUserByName(String username){
         return userMapper.findUserByName(username);
     }
+
+    /**
+     * 密码重置
+     * @param id
+     */
+    public void resetPwd(String id){
+        userMapper.updatePwd(id,defaultPwd);
+    }
+
+    /**
+     * 检查旧密码是否输入正确
+     * @param id
+     * @param oldPwd
+     * @return
+     */
+    public boolean checkOldPwd(String id, String oldPwd){
+        boolean flag = false;
+        String encryptPwd = MD5Utils.encrypt(oldPwd);
+        Map<String,String> userInfo = userMapper.getUserById(id);
+        if(encryptPwd.equals(userInfo.get("password"))){
+            flag = true;
+        }
+        return flag;
+    }
+
+    /**
+     * 修改密码
+     * @param id
+     * @param newPwd
+     */
+    public void updatePwd(String id, String newPwd){
+        userMapper.updatePwd(id,MD5Utils.encrypt(newPwd));
+    }
+
 }

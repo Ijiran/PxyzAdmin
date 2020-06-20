@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.*;
 import top.pxyz.pxyzadmin.core.util.base.ValidateHelper;
 import top.pxyz.pxyzadmin.core.util.page.PageUtils;
+import top.pxyz.pxyzadmin.core.util.session.SessionUtils;
 import top.pxyz.pxyzadmin.system.role.service.RoleService;
 import top.pxyz.pxyzadmin.system.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,7 +197,7 @@ public class UserController {
     @RequestMapping(value = "updatePwd",method = RequestMethod.POST)
     @ResponseBody
     public String updatePwd(@RequestParam String oldPwd,@RequestParam String newPwd){
-        String id = "";
+        String id = SessionUtils.getUserId();
         Map<String,String> map = new HashMap<>();
         if(!userService.checkOldPwd(id, oldPwd)){
             map.put("result","fail");

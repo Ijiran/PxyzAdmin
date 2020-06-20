@@ -1,14 +1,13 @@
 package top.pxyz.pxyzadmin.system.user.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.web.bind.annotation.*;
 import top.pxyz.pxyzadmin.core.util.base.ValidateHelper;
 import top.pxyz.pxyzadmin.core.util.page.PageUtils;
 import top.pxyz.pxyzadmin.system.role.service.RoleService;
 import top.pxyz.pxyzadmin.system.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -190,15 +189,14 @@ public class UserController {
 
     /**
      * 密码修改
-     * @param request
+     * @param oldPwd
+     * @param newPwd
      * @return
      */
-    @RequestMapping("resetPwd")
+    @RequestMapping(value = "updatePwd",method = RequestMethod.POST)
     @ResponseBody
-    public String updatePwd(HttpServletRequest request){
-        String id = request.getParameter("id");
-        String oldPwd = request.getParameter("oldPwd");
-        String newPwd = request.getParameter("newPwd");
+    public String updatePwd(@RequestParam String oldPwd,@RequestParam String newPwd){
+        String id = "";
         Map<String,String> map = new HashMap<>();
         if(!userService.checkOldPwd(id, oldPwd)){
             map.put("result","fail");

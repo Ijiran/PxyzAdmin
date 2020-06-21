@@ -51,10 +51,11 @@
         //监听提交
         form.on('submit(saveBtn)', function (data) {
             $.post("/pxyzadmin/user/updatePwd",{"oldPwd" : data.field.old_password,"newPwd" : data.field.new_password},function(result){
-                if(data.result == 'success'){
-                    layer.msg("重置成功，新密码为123456！");
+                var resultData = JSON.parse(result);
+                if(resultData.result == 'success'){
+                    layer.msg("修改成功！");
                 }else{
-                    layer.msg("重置失败");
+                    layer.msg(resultData.message);
                 }
             });
             return false;

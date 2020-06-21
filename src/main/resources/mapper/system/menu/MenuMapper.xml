@@ -24,11 +24,11 @@
     <insert id="addMenu">
         INSERT INTO SYS_MENU
         (
-        ID,TITLE,HREF,ICON,TARGET,REMARK,SORT,PID,STATUS,CREATE_TIME,UPDATE_TIME
+        ID,TITLE,HREF,ICON,TARGET,REMARK,SORT,PID,STATUS,CREATE_TIME,UPDATE_TIME,MARK
         )
         VALUES
         (
-        #{id},#{title},#{href},#{icon},#{target},#{remark},#{sort},#{pid},'1',now(),now()
+        #{id},#{title},#{href},#{icon},#{target},#{remark},#{sort},#{pid},'1',now(),now(),'1'
         )
     </insert>
 

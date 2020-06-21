@@ -76,9 +76,13 @@ public class UserController {
      */
     @RequestMapping("toUserSetting")
     public Object toUserSetting(){
+        String id = SessionUtils.getUserId();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin/system/user/userSetting");
         modelAndView.addObject("id",null);
+        if(ValidateHelper.isNotEmptyString(id)){
+            modelAndView.addObject("formData",userService.getUserById(id));
+        }
         return modelAndView;
     }
 

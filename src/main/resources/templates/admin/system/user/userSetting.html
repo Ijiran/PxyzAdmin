@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.springframework.org/schema/jdbc">
 <head>
     <meta charset="utf-8">
     <title>基本资料</title>
@@ -9,19 +9,20 @@
     <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
     <link rel="stylesheet" href="../css/public.css" media="all">
     <style>
-        .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
+        .layui-form-item {width: auto;padding-right: 10px;line-height: 38px;}
     </style>
 </head>
 <body>
 <div class="layuimini-container">
     <div class="layuimini-main">
 
-        <div class="layui-form layuimini-form">
+        <div class="layui-form layuimini-form" lay-filter="userInfo">
             <div class="layui-form-item">
-                <label class="layui-form-label required">管理账号</label>
+                <label class="layui-form-label required">账号</label>
                 <div class="layui-input-block">
-                    <input type="text" name="username" lay-verify="required" lay-reqtext="管理账号不能为空" placeholder="请输入管理账号"  value="admin" class="layui-input">
-                    <tip>填写自己管理账号的名称。</tip>
+                    <input type="hidden" name="id" />
+                    <input type="text" name="username" lay-verify="required" lay-reqtext="账号不能为空" placeholder="请输入账号" disabled class="layui-input">
+                    <tip>填写自己账号的名称。</tip>
                 </div>
             </div>
 
@@ -31,6 +32,7 @@
                     <input type="email" name="email"  placeholder="请输入邮箱"  value="" class="layui-input">
                 </div>
             </div>
+
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">备注信息</label>
                 <div class="layui-input-block">
@@ -48,19 +50,35 @@
 </div>
 <script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
-<script>
+<script th:inline="javascript">
+
+    var formData = [[${formData}]];
+
     layui.use(['form','miniTab'], function () {
         var form = layui.form,
             layer = layui.layer,
+            $ = layui.jquery,
             miniTab = layui.miniTab;
+
+        //初始赋值
+        form.val('userInfo', formData);
 
         //监听提交
         form.on('submit(saveBtn)', function (data) {
-            var index = layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            }, function () {
-                layer.close(index);
-                miniTab.deleteCurrentByIframe();
+            $.ajax({
+                type: "get",
+                url: '/pxyzadmin/user/saveUser',
+                data: data.field,
+                cache: false,
+                async: false,
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    if(data.result == 'success'){
+                        parent.layer.msg("修改成功！");
+                        miniTab.deleteCurrentByIframe();
+                    }
+                }
             });
             return false;
         });

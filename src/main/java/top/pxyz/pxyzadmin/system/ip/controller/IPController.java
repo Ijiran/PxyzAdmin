@@ -1,6 +1,7 @@
 package top.pxyz.pxyzadmin.system.ip.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * IPController
@@ -11,6 +12,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IPController {
 
+    /**
+     * ip管理首页
+     * @return
+     */
+    @RequestMapping("index")
+    public String toIndex(){
+        return "admin/system/ip/index";
+    }
 
 
 }

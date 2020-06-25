@@ -1,5 +1,7 @@
 package top.pxyz.pxyzadmin.system.oshi.service;
 
+import java.util.Map;
+
 /**
  * 监控Service接口
  * @author Ijiran
@@ -8,6 +10,9 @@ package top.pxyz.pxyzadmin.system.oshi.service;
  */
 public interface OshiService {
 
-
-
+    /**
+     * 获取监控各项参数
+     * @return
+     */
+    Map<String, Object> getOshiParam();
 }

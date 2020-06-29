@@ -32,7 +32,7 @@ gitee代码地址：https://gitee.com/Ijiran/PxyzAdmin
 ## 正在开发
 
 - 角色管理-用户授权
-- ip白名单
+- ip白名单(暂时搁置)
 - 监控管理：读取服务器当前各项性能参数（oshi-core）
 - 字典管理
 - 登录日志

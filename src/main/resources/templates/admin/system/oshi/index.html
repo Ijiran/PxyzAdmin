@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>监控管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../lib/layui-v2.5.5/css/layui.css" media="all">
+    <link rel="stylesheet" href="../lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="../css/public.css" media="all">
+    <style>
+        .top-panel {
+            border: 1px solid #eceff9;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .top-panel > .layui-card-body{
+            height: 230px;
+        }
+        .header-title, .oshi-tr th span{
+            font-weight: bold;
+        }
+        .oshi-table{
+            border-width: 0px !important;
+        }
+        .oshi-tr{
+            background-color: #ffffff !important;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="layuimini-container">-->
+<div class="layuimini-main">
+
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-xs12 layui-col-md6">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header header-title">CPU</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <table class="oshi-table layui-table" lay-skin="line" >
+                            <thead>
+                            <tr class="oshi-tr">
+                                <th><span>属性</span></th>
+                                <th><span>值</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>核心数</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>用户使用率</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>系统使用率</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>当前空闲率</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md6">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">内存</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <table class="oshi-table layui-table" lay-skin="line" >
+                            <thead>
+                            <tr class="oshi-tr">
+                                <th><span>属性</span></th>
+                                <th><span>内存</span></th>
+                                <th><span>JVM</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>总内存</td>
+                                <td>暂未查出</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>已用内存</td>
+                                <td>暂未查出</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>剩余内存</td>
+                                <td>暂未查出</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>使用率</td>
+                                <td>暂未查出</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md6">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">服务器信息</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <table class="oshi-table layui-table" lay-skin="line" >
+                            <thead>
+                            <tr class="oshi-tr">
+                                <th><span>属性</span></th>
+                                <th><span>值</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>服务器名称</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>操作系统</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>服务器IP</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>系统架构</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-xs12 layui-col-md6">
+
+            <div class="layui-card top-panel">
+                <div class="layui-card-header">Java虚拟机信息</div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space5">
+                        <table class="oshi-table layui-table" lay-skin="line" >
+                            <thead>
+                            <tr class="oshi-tr">
+                                <th><span>属性</span></th>
+                                <th><span>值</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Java名称</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>Java版本</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>启动时间</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            <tr>
+                                <td>使用时间</td>
+                                <td>暂未查出</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!--</div>-->
+<script src="../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+<script src="../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+<script>
+    layui.use(['layer'], function () {
+        var $ = layui.jquery,
+            layer = layui.layer;
+
+    });
+</script>
+</body>
+</html>
